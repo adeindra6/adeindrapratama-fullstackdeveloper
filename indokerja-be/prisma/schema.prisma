@@ -1,0 +1,109 @@
+generator client {
+  provider = "prisma-client-js"
+  output   = "../generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+enum UserRole {
+  JOB_SEEKER
+  COMPANY
+}
+
+enum ApplicationStatus {
+  APPLIED
+  REVIEWING
+  SHORTLISTED
+  REJECTED
+  ACCEPTED
+}
+
+model User {
+  id           Int      @id @default(autoincrement())
+  email        String   @unique
+  passwordHash String
+  role         UserRole
+
+  jobSeekerProfile JobSeekerProfile?
+  companyProfile   CompanyProfile?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("users")
+}
+
+model JobSeekerProfile {
+  id        Int    @id @default(autoincrement())
+  userId    Int    @unique
+  firstName String
+  lastName  String
+  jobTitle  String?
+  location  String?
+  resumeUrl String?
+
+  user         User              @relation(fields: [userId], references: [id], onDelete: Cascade)
+  applications JobApplication[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("job_seeker_profiles")
+}
+
+model CompanyProfile {
+  id          Int     @id @default(autoincrement())
+  userId      Int     @unique
+  companyName String
+  industry    String?
+  companySize String?
+  website     String?
+
+  user      User         @relation(fields: [userId], references: [id], onDelete: Cascade)
+  jobPosts  JobPosting[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("company_profiles")
+}
+
+model JobPosting {
+  id          Int      @id @default(autoincrement())
+  companyId   Int
+  title       String
+  description String
+  location    String?
+  employment  String?
+  salaryMin   Int?
+  salaryMax   Int?
+  isActive    Boolean  @default(true)
+
+  company      CompanyProfile @relation(fields: [companyId], references: [id], onDelete: Cascade)
+  applications JobApplication[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("job_postings")
+}
+
+model JobApplication {
+  id          Int               @id @default(autoincrement())
+  jobSeekerId Int
+  jobPostingId Int
+  status      ApplicationStatus @default(APPLIED)
+  coverLetter String?
+  appliedAt   DateTime          @default(now())
+
+  jobSeeker JobSeekerProfile @relation(fields: [jobSeekerId], references: [id], onDelete: Cascade)
+  jobPosting JobPosting      @relation(fields: [jobPostingId], references: [id], onDelete: Cascade)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@unique([jobSeekerId, jobPostingId])
+  @@map("job_applications")
+}
