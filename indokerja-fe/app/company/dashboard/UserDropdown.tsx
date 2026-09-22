@@ -70,7 +70,7 @@ export default function UserDropdown() {
         <div className="absolute right-0 z-50 mt-2 w-56 rounded-xl border bg-white p-2 shadow-lg">
           {/* Profile */}
           <a
-            href="/profile"
+            href="/company/profile"
             className="flex items-center gap-3 rounded-lg px-3 py-2 text-sm text-gray-700 hover:bg-gray-100"
           >
             <User className="h-4 w-4" />
@@ -79,7 +79,7 @@ export default function UserDropdown() {
 
           {/* Settings */}
           <a
-            href="/settings"
+            href="/company/settings"
             className="flex items-center gap-3 rounded-lg px-3 py-2 text-sm text-gray-700 hover:bg-gray-100"
           >
             <Settings className="h-4 w-4" />

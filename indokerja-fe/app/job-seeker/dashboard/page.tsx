@@ -1,3 +1,6 @@
+"use client";
+
+import { useEffect, useState } from "react";
 import {
   Briefcase,
   CalendarDays,
@@ -5,39 +8,10 @@ import {
   Clock3,
   TrendingUp,
 } from "lucide-react";
+import type { Job } from "@/types/job";
+import type { Application } from "@/types/application";
 
 import UserDropdown from "./UserDropdown";
-
-const applications = [
-  {
-    company: "Google",
-    position: "Software Engineer",
-    location: "Jakarta / Remote",
-    date: "Sep 20, 2026",
-    status: "Interview",
-  },
-  {
-    company: "Tokopedia",
-    position: "Backend Engineer",
-    location: "Jakarta",
-    date: "Sep 18, 2026",
-    status: "Screening",
-  },
-  {
-    company: "Gojek",
-    position: "Full Stack Engineer",
-    location: "Jakarta",
-    date: "Sep 15, 2026",
-    status: "Applied",
-  },
-  {
-    company: "Traveloka",
-    position: "Software Engineer",
-    location: "Jakarta",
-    date: "Sep 12, 2026",
-    status: "Rejected",
-  },
-];
 
 const statusStyles: Record<string, string> = {
   Applied: "bg-blue-50 text-blue-600",
@@ -80,6 +54,7 @@ function StatCard({
 }
 
 export default function DashboardPage() {
+
   return (
     <div className="min-h-screen bg-gray-50">
       <div className="flex">
@@ -97,6 +72,13 @@ export default function DashboardPage() {
               className="flex items-center rounded-lg bg-indigo-50 px-4 py-3 text-sm font-medium text-indigo-600"
             >
               Dashboard
+            </a>
+
+            <a
+              href="/job-seeker/jobs"
+              className="flex items-center rounded-lg px-4 py-3 text-sm text-gray-600 hover:bg-gray-50"
+            >
+              Jobs
             </a>
 
             <a
@@ -164,28 +146,28 @@ export default function DashboardPage() {
             <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
               <StatCard
                 title="Applications"
-                value="24"
-                description="+4 this month"
+                value="0"
+                description="+0 this month"
                 icon={Briefcase}
               />
 
               <StatCard
                 title="Active Applications"
-                value="8"
+                value="0"
                 description="Currently in progress"
                 icon={Clock3}
               />
 
               <StatCard
                 title="Interviews"
-                value="3"
+                value="0"
                 description="Upcoming interviews"
                 icon={CalendarDays}
               />
 
               <StatCard
                 title="Offers"
-                value="1"
+                value="0"
                 description="Offers received"
                 icon={CheckCircle2}
               />
@@ -247,47 +229,6 @@ export default function DashboardPage() {
                 </h2>
 
                 <div className="mt-5 space-y-4">
-                  <div className="rounded-lg border p-4">
-                    <div className="flex justify-between">
-                      <div>
-                        <p className="font-medium">
-                          Google
-                        </p>
-                        <p className="text-sm text-gray-500">
-                          Software Engineer
-                        </p>
-                      </div>
-
-                      <span className="text-xs font-medium text-indigo-600">
-                        Tomorrow
-                      </span>
-                    </div>
-
-                    <div className="mt-3 text-xs text-gray-500">
-                      10:00 AM · Google Meet
-                    </div>
-                  </div>
-
-                  <div className="rounded-lg border p-4">
-                    <div className="flex justify-between">
-                      <div>
-                        <p className="font-medium">
-                          Tokopedia
-                        </p>
-                        <p className="text-sm text-gray-500">
-                          Backend Engineer
-                        </p>
-                      </div>
-
-                      <span className="text-xs font-medium text-indigo-600">
-                        Sep 25
-                      </span>
-                    </div>
-
-                    <div className="mt-3 text-xs text-gray-500">
-                      2:00 PM · Online
-                    </div>
-                  </div>
                 </div>
 
                 <button className="mt-5 w-full rounded-lg border px-4 py-2 text-sm font-medium hover:bg-gray-50">
@@ -318,43 +259,6 @@ export default function DashboardPage() {
               </div>
 
               <div className="divide-y">
-                {applications.map((application) => (
-                  <div
-                    key={application.company}
-                    className="flex flex-col gap-4 p-5 md:flex-row md:items-center md:justify-between"
-                  >
-                    <div className="flex items-center gap-4">
-                      <div className="flex h-11 w-11 items-center justify-center rounded-lg bg-gray-100 font-bold text-gray-600">
-                        {application.company.charAt(0)}
-                      </div>
-
-                      <div>
-                        <h3 className="font-medium text-gray-900">
-                          {application.position}
-                        </h3>
-
-                        <p className="text-sm text-gray-500">
-                          {application.company} ·{" "}
-                          {application.location}
-                        </p>
-                      </div>
-                    </div>
-
-                    <div className="flex items-center gap-5">
-                      <span className="text-sm text-gray-400">
-                        {application.date}
-                      </span>
-
-                      <span
-                        className={`rounded-full px-3 py-1 text-xs font-medium ${
-                          statusStyles[application.status]
-                        }`}
-                      >
-                        {application.status}
-                      </span>
-                    </div>
-                  </div>
-                ))}
               </div>
             </div>
           </div>

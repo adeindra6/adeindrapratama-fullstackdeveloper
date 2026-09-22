@@ -8,33 +8,6 @@ import {
 
 import UserDropdown from "./UserDropdown";
 
-const applicants = [
-  {
-    name: "John Doe",
-    position: "Backend Engineer",
-    applied: "Sep 20, 2026",
-    status: "Shortlisted",
-  },
-  {
-    name: "Jane Smith",
-    position: "UI/UX Designer",
-    applied: "Sep 19, 2026",
-    status: "Reviewing",
-  },
-  {
-    name: "Michael Chen",
-    position: "Frontend Engineer",
-    applied: "Sep 18, 2026",
-    status: "Interview",
-  },
-  {
-    name: "Sarah Wilson",
-    position: "Product Manager",
-    applied: "Sep 17, 2026",
-    status: "Applied",
-  },
-];
-
 const statusStyles: Record<string, string> = {
   Applied: "bg-blue-50 text-blue-600",
   Reviewing: "bg-yellow-50 text-yellow-600",
@@ -178,28 +151,28 @@ export default function DashboardPage() {
             <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
               <StatCard
                 title="Active Jobs"
-                value="12"
-                description="+2 this month"
+                value="0"
+                description="+0 this month"
                 icon={BriefcaseBusiness}
               />
 
               <StatCard
                 title="Applicants"
-                value="248"
-                description="+32 this month"
+                value="0"
+                description="+0 this month"
                 icon={Users}
               />
 
               <StatCard
                 title="Interviews"
-                value="32"
+                value="0"
                 description="This month"
                 icon={CalendarDays}
               />
 
               <StatCard
                 title="Offers"
-                value="6"
+                value="0"
                 description="3 pending response"
                 icon={Handshake}
               />
@@ -272,49 +245,7 @@ export default function DashboardPage() {
                 </div>
 
                 <div className="mt-5 space-y-4">
-                  <div className="rounded-lg border p-4">
-                    <div className="flex justify-between">
-                      <div>
-                        <p className="font-medium">
-                          Sarah Wilson
-                        </p>
-
-                        <p className="text-sm text-gray-500">
-                          Product Manager
-                        </p>
-                      </div>
-
-                      <span className="text-xs font-medium text-indigo-600">
-                        Tomorrow
-                      </span>
-                    </div>
-
-                    <p className="mt-3 text-xs text-gray-500">
-                      10:00 AM · Google Meet
-                    </p>
-                  </div>
-
-                  <div className="rounded-lg border p-4">
-                    <div className="flex justify-between">
-                      <div>
-                        <p className="font-medium">
-                          Michael Chen
-                        </p>
-
-                        <p className="text-sm text-gray-500">
-                          Frontend Engineer
-                        </p>
-                      </div>
-
-                      <span className="text-xs font-medium text-indigo-600">
-                        Sep 25
-                      </span>
-                    </div>
-
-                    <p className="mt-3 text-xs text-gray-500">
-                      2:00 PM · Office
-                    </p>
-                  </div>
+                  
                 </div>
 
                 <a
@@ -348,42 +279,6 @@ export default function DashboardPage() {
               </div>
 
               <div className="divide-y">
-                {applicants.map((applicant) => (
-                  <div
-                    key={applicant.name}
-                    className="flex flex-col gap-4 p-5 md:flex-row md:items-center md:justify-between"
-                  >
-                    <div className="flex items-center gap-4">
-                      <div className="flex h-11 w-11 items-center justify-center rounded-full bg-gray-100 font-semibold text-gray-600">
-                        {applicant.name.charAt(0)}
-                      </div>
-
-                      <div>
-                        <h3 className="font-medium text-gray-900">
-                          {applicant.name}
-                        </h3>
-
-                        <p className="text-sm text-gray-500">
-                          {applicant.position}
-                        </p>
-                      </div>
-                    </div>
-
-                    <div className="flex items-center gap-5">
-                      <span className="text-sm text-gray-400">
-                        {applicant.applied}
-                      </span>
-
-                      <span
-                        className={`rounded-full px-3 py-1 text-xs font-medium ${
-                          statusStyles[applicant.status]
-                        }`}
-                      >
-                        {applicant.status}
-                      </span>
-                    </div>
-                  </div>
-                ))}
               </div>
             </div>
           </div>
