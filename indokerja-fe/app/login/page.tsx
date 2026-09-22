@@ -1,13 +1,90 @@
 "use client";
 
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 import Link from "next/link";
+import { toast } from "sonner";
 
 type AccountType = "job-seeker" | "company";
 
 export default function LoginPage() {
+  const router = useRouter();
+
   const [accountType, setAccountType] =
     useState<AccountType>("job-seeker");
+
+  const [loading, setLoading] = useState(false)
+
+  const handleSubmit = async (
+    e: React.FormEvent<HTMLFormElement>
+  ) => {
+    e.preventDefault();
+
+    setLoading(true);
+
+    const formData = new FormData(e.currentTarget);
+
+    const email = formData.get("email") as string;
+    const password = formData.get("password") as string;
+    const remember = formData.get("remember") === "on";
+
+    const role =
+      accountType === "job-seeker"
+        ? "JOB_SEEKER"
+        : "COMPANY";
+
+    try {
+      const response = await fetch(
+        "http://localhost:3001/api/auth/login",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            email,
+            password,
+            role,
+            remember,
+          }),
+        }
+      );
+
+      const result = await response.json();
+
+      if (!response.ok) {
+        throw new Error(
+          result.message || "Login failed"
+        );
+      }
+
+      toast.success("Login successful!", {
+        description: "Welcome back to Indokerja.id",
+      });
+
+      // Save user information if needed
+      localStorage.setItem(
+        "user",
+        JSON.stringify(result.user)
+      );
+
+      setTimeout(() => {
+        if (accountType === "job-seeker") {
+          router.push("/job-seeker/dashboard");
+        } else {
+          router.push("/company/dashboard");
+        }
+      }, 1000);
+    } catch (error) {
+      toast.error(
+        error instanceof Error
+          ? error.message
+          : "Something went wrong"
+      );
+    } finally {
+      setLoading(false);
+    }
+  };
 
   return (
     <main className="min-h-screen bg-gray-50">
@@ -98,7 +175,7 @@ export default function LoginPage() {
               </p>
             </div>
 
-            <form className="space-y-5">
+            <form onSubmit={handleSubmit} className="space-y-5">
               {/* Email */}
               <div>
                 <label
@@ -172,12 +249,16 @@ export default function LoginPage() {
               {/* Submit */}
               <button
                 type="submit"
+                disabled={loading}
                 className="w-full rounded-lg bg-indigo-600 px-5 py-3 font-semibold text-white transition hover:bg-indigo-700"
               >
-                Sign In as{" "}
-                {accountType === "job-seeker"
-                  ? "Job Seeker"
-                  : "Company"}
+                {loading
+                  ? "Signing in..."
+                  : `Sign In as ${
+                      accountType === "job-seeker"
+                        ? "Job Seeker"
+                        : "Company"
+                    }`}
               </button>
             </form>
 

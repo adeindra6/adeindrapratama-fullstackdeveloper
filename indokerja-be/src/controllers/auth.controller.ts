@@ -122,3 +122,61 @@ export async function register(req: Request, res: Response) {
     });
   }
 }
+
+export async function login(req: Request, res: Response) {
+  try {
+    const { email, password, role } = req.body;
+
+    if (!email || !password || !role) {
+      return res.status(400).json({
+        message: "email, password, and role are required",
+      });
+    }
+
+    const normalizedEmail = email.trim().toLowerCase();
+
+    const user = await prisma.user.findUnique({
+      where: {
+        email: normalizedEmail,
+      },
+    });
+
+    if (!user) {
+      return res.status(401).json({
+        message: "Invalid email or password",
+      });
+    }
+
+    if (user.role !== role) {
+      return res.status(401).json({
+        message: "Invalid account type",
+      });
+    }
+
+    const passwordMatches = await bcrypt.compare(
+      password,
+      user.passwordHash
+    );
+
+    if (!passwordMatches) {
+      return res.status(401).json({
+        message: "Invalid email or password",
+      });
+    }
+
+    return res.status(200).json({
+      message: "Login successful",
+      user: {
+        id: user.id,
+        email: user.email,
+        role: user.role,
+      },
+    });
+  } catch (error) {
+    console.error("Login error:", error);
+
+    return res.status(500).json({
+      message: "Internal server error",
+    });
+  }
+}
