@@ -1,5 +1,8 @@
 "use client";
 
+import { useRouter } from "next/navigation";
+import { toast } from "sonner";
+
 import { useState } from "react";
 import Link from "next/link";
 
@@ -124,8 +127,54 @@ export default function RegisterPage() {
 /* -------------------------------------------------- */
 
 function JobSeekerForm() {
+  const router = useRouter();
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    const formData = new FormData(e.currentTarget);
+
+    const data = {
+      role: "JOB_SEEKER",
+      firstName: formData.get("firstName"),
+      lastName: formData.get("lastName"),
+      email: formData.get("email"),
+      password: formData.get("password"),
+      jobTitle: formData.get("jobTitle"),
+      location: formData.get("location"),
+    };
+
+    const response = await fetch(
+      "http://localhost:3001/api/auth/register",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      }
+    );
+
+    const result = await response.json();
+
+    if (!response.ok) {
+      alert(result.message);
+      return;
+    }
+
+    console.log(result);
+
+    toast.success("Account created successfully!", {
+      description: "You can now log in with your account.",
+    });
+
+    setTimeout(() => {
+      router.push("/login");
+    }, 1500);
+  };
+
   return (
-    <form className="space-y-5">
+    <form onSubmit={handleSubmit} className="space-y-5">
       <div>
         <h2 className="text-xl font-semibold text-gray-900">
           Job Seeker Information
@@ -271,8 +320,57 @@ function JobSeekerForm() {
 /* -------------------------------------------------- */
 
 function CompanyForm() {
+  const router = useRouter();
+
+  const handleSubmit = async (
+    e: React.FormEvent<HTMLFormElement>
+  ) => {
+    e.preventDefault();
+
+    const formData = new FormData(e.currentTarget);
+
+    const data = {
+      role: "COMPANY",
+
+      companyName: formData.get("companyName"),
+      email: formData.get("companyEmail"),
+      password: formData.get("password"),
+      industry: formData.get("industry"),
+      companySize: formData.get("companySize"),
+      website: formData.get("website"),
+    };
+
+    const response = await fetch(
+      "http://localhost:3001/api/auth/register",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      }
+    );
+
+    const result = await response.json();
+
+    if (!response.ok) {
+      alert(result.message);
+      return;
+    }
+
+    console.log(result);
+
+    toast.success("Account created successfully!", {
+      description: "You can now log in with your account.",
+    });
+
+    setTimeout(() => {
+      router.push("/login");
+    }, 1500);
+  };
+
   return (
-    <form className="space-y-5">
+    <form onSubmit={handleSubmit} className="space-y-5">
       <div>
         <h2 className="text-xl font-semibold text-gray-900">
           Company Information
