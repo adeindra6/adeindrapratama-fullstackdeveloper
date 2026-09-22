@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 interface JobPosting {
   id: number;
@@ -22,6 +23,8 @@ export default function CompanyJobsPage() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
   const [deletingId, setDeletingId] = useState<number | null>(null);
+
+  const router = useRouter();
 
   useEffect(() => {
     async function fetchJobs() {
@@ -236,6 +239,15 @@ export default function CompanyJobsPage() {
   return (
     <main className="min-h-screen bg-gray-50">
       <div className="mx-auto max-w-7xl px-6 py-8">
+        <div className="mb-6">
+          <button
+            type="button"
+            onClick={() => router.push("/company/dashboard")}
+            className="inline-flex items-center gap-2 rounded-lg border border-gray-300 px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50"
+          >
+            ← Back to Dashboard
+          </button>
+        </div>
         {/* Header */}
         <div className="mb-8 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
           <div>
