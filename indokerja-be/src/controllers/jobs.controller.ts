@@ -27,9 +27,21 @@ export async function getJobByIdController(
   res: Response
 ) {
   try {
-    const { id } = req.params;
+    const jobId = Number(req.params.id);
 
-    const job = await getJobById(Number(id));
+    if (!Number.isInteger(jobId)) {
+      return res.status(400).json({
+        success: false,
+        message: "Invalid job ID",
+      });
+    }
+
+    const jobSeekerId = req.user?.id;
+
+    const job = await getJobById(
+      jobId,
+      jobSeekerId
+    );
 
     if (!job) {
       return res.status(404).json({
@@ -51,6 +63,7 @@ export async function getJobByIdController(
         companyId: job.companyId,
         companyName: job.company.companyName,
         isActive: job.isActive,
+        hasApplied: job.hasApplied,
         createdAt: job.createdAt,
         updatedAt: job.updatedAt,
       },

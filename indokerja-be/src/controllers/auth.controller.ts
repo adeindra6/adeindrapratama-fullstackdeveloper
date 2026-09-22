@@ -1,6 +1,7 @@
 import type { Request, Response } from "express";
 import bcrypt from "bcrypt";
 import prisma from "../lib/prisma";
+import { loginUser } from "../services/auth.service";
 
 export async function register(req: Request, res: Response) {
   try {
@@ -164,13 +165,14 @@ export async function login(req: Request, res: Response) {
       });
     }
 
+    const result = await loginUser({
+      email,
+      password,
+    });
+
     return res.status(200).json({
       message: "Login successful",
-      user: {
-        id: user.id,
-        email: user.email,
-        role: user.role,
-      },
+      data: result,
     });
   } catch (error) {
     console.error("Login error:", error);

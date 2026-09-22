@@ -25,6 +25,7 @@ interface Job {
   salaryMax?: number;
   companyId: string;
   companyName: string;
+  hasApplied: boolean;
   isActive: boolean;
   createdAt: string;
   updatedAt: string;
@@ -67,6 +68,57 @@ export default function JobDetailPage() {
       fetchJob();
     }
   }, [jobId]);
+
+  async function handleApply() {
+    try {
+      const token = localStorage.getItem("token");
+
+      if (!token) {
+        alert("Please login first.");
+        return;
+      }
+
+      const response = await fetch(
+        `http://localhost:3001/api/jobs/${jobId}/apply`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+          body: JSON.stringify({
+            coverLetter:
+              "I am interested in this position and believe my experience matches the requirements.",
+          }),
+        }
+      );
+
+      const result = await response.json();
+
+      if (!response.ok) {
+        throw new Error(result.message);
+      }
+
+      setJob((currentJob) =>
+        currentJob
+          ? {
+              ...currentJob,
+              hasApplied: true,
+            }
+          : currentJob
+      );
+
+      alert("Application submitted successfully!");
+    } catch (error) {
+      console.error(error);
+
+      alert(
+        error instanceof Error
+          ? error.message
+          : "Failed to apply"
+      );
+    }
+  }
 
   function formatSalary() {
     if (!job?.salaryMin && !job?.salaryMax) {
@@ -307,10 +359,15 @@ export default function JobDetailPage() {
 
               <button
                 type="button"
-                disabled={!job.isActive}
-                className="mt-5 w-full rounded-lg bg-indigo-600 px-5 py-3 text-sm font-semibold text-white transition hover:bg-indigo-700 disabled:cursor-not-allowed disabled:bg-gray-300"
+                disabled={!job.isActive || job.hasApplied}
+                onClick={handleApply}
+                className="mt-5 w-full rounded-lg bg-indigo-600 px-5 py-3 text-sm font-semibold text-white hover:bg-indigo-700 disabled:cursor-not-allowed disabled:bg-gray-300"
               >
-                {job.isActive ? "Apply Now" : "Job Closed"}
+                {!job.isActive
+                  ? "Job Closed"
+                  : job.hasApplied
+                  ? "Already Applied"
+                  : "Apply Now"}
               </button>
 
               <div className="mt-6 border-t pt-5">

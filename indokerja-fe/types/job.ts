@@ -8,6 +8,7 @@ export interface Job {
   salaryMin?: number;
   salaryMax?: number;
   isActive: boolean;
+  hasApplied: boolean;
   createdAt: string;
   updatedAt: string;
   company: {

@@ -58,15 +58,14 @@ export default function LoginPage() {
         );
       }
 
+      localStorage.setItem(
+        "token",
+        result.data.token
+      );
+
       toast.success("Login successful!", {
         description: "Welcome back to Indokerja.id",
       });
-
-      // Save user information if needed
-      localStorage.setItem(
-        "user",
-        JSON.stringify(result.user)
-      );
 
       setTimeout(() => {
         if (accountType === "job-seeker") {

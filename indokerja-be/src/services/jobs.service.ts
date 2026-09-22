@@ -18,8 +18,8 @@ export async function getJobs() {
   });
 }
 
-export async function getJobById(id: number) {
-  return prisma.jobPosting.findUnique({
+export async function getJobById(id: number, jobSeekerId?: number) {
+  const job = await prisma.jobPosting.findUnique({
     where: {
       id,
     },
@@ -31,4 +31,28 @@ export async function getJobById(id: number) {
       },
     },
   });
+
+  if (!job) {
+    return null;
+  }
+
+  let hasApplied = false;
+
+  if (jobSeekerId) {
+    const application = await prisma.jobApplication.findUnique({
+      where: {
+        jobSeekerId_jobPostingId: {
+          jobSeekerId,
+          jobPostingId: id,
+        },
+      },
+    });
+
+    hasApplied = !!application;
+  }
+
+  return {
+    ...job,
+    hasApplied,
+  };
 }
