@@ -1588,8 +1588,8 @@ export namespace Prisma {
     role?: boolean
     createdAt?: boolean
     updatedAt?: boolean
-    jobSeekerProfile?: boolean | User$jobSeekerProfileArgs<ExtArgs>
     companyProfile?: boolean | User$companyProfileArgs<ExtArgs>
+    jobSeekerProfile?: boolean | User$jobSeekerProfileArgs<ExtArgs>
   }, ExtArgs["result"]["user"]>
 
   export type UserSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -1621,8 +1621,8 @@ export namespace Prisma {
 
   export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "email" | "passwordHash" | "role" | "createdAt" | "updatedAt", ExtArgs["result"]["user"]>
   export type UserInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    jobSeekerProfile?: boolean | User$jobSeekerProfileArgs<ExtArgs>
     companyProfile?: boolean | User$companyProfileArgs<ExtArgs>
+    jobSeekerProfile?: boolean | User$jobSeekerProfileArgs<ExtArgs>
   }
   export type UserIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
   export type UserIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
@@ -1630,8 +1630,8 @@ export namespace Prisma {
   export type $UserPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "User"
     objects: {
-      jobSeekerProfile: Prisma.$JobSeekerProfilePayload<ExtArgs> | null
       companyProfile: Prisma.$CompanyProfilePayload<ExtArgs> | null
+      jobSeekerProfile: Prisma.$JobSeekerProfilePayload<ExtArgs> | null
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
@@ -2034,8 +2034,8 @@ export namespace Prisma {
    */
   export interface Prisma__UserClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    jobSeekerProfile<T extends User$jobSeekerProfileArgs<ExtArgs> = {}>(args?: Subset<T, User$jobSeekerProfileArgs<ExtArgs>>): Prisma__JobSeekerProfileClient<$Result.GetResult<Prisma.$JobSeekerProfilePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
     companyProfile<T extends User$companyProfileArgs<ExtArgs> = {}>(args?: Subset<T, User$companyProfileArgs<ExtArgs>>): Prisma__CompanyProfileClient<$Result.GetResult<Prisma.$CompanyProfilePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    jobSeekerProfile<T extends User$jobSeekerProfileArgs<ExtArgs> = {}>(args?: Subset<T, User$jobSeekerProfileArgs<ExtArgs>>): Prisma__JobSeekerProfileClient<$Result.GetResult<Prisma.$JobSeekerProfilePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -2464,25 +2464,6 @@ export namespace Prisma {
   }
 
   /**
-   * User.jobSeekerProfile
-   */
-  export type User$jobSeekerProfileArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the JobSeekerProfile
-     */
-    select?: JobSeekerProfileSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the JobSeekerProfile
-     */
-    omit?: JobSeekerProfileOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: JobSeekerProfileInclude<ExtArgs> | null
-    where?: JobSeekerProfileWhereInput
-  }
-
-  /**
    * User.companyProfile
    */
   export type User$companyProfileArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -2499,6 +2480,25 @@ export namespace Prisma {
      */
     include?: CompanyProfileInclude<ExtArgs> | null
     where?: CompanyProfileWhereInput
+  }
+
+  /**
+   * User.jobSeekerProfile
+   */
+  export type User$jobSeekerProfileArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the JobSeekerProfile
+     */
+    select?: JobSeekerProfileSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the JobSeekerProfile
+     */
+    omit?: JobSeekerProfileOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: JobSeekerProfileInclude<ExtArgs> | null
+    where?: JobSeekerProfileWhereInput
   }
 
   /**
@@ -2754,8 +2754,8 @@ export namespace Prisma {
     resumeUrl?: boolean
     createdAt?: boolean
     updatedAt?: boolean
-    user?: boolean | UserDefaultArgs<ExtArgs>
     applications?: boolean | JobSeekerProfile$applicationsArgs<ExtArgs>
+    user?: boolean | UserDefaultArgs<ExtArgs>
     _count?: boolean | JobSeekerProfileCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["jobSeekerProfile"]>
 
@@ -2799,8 +2799,8 @@ export namespace Prisma {
 
   export type JobSeekerProfileOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "userId" | "firstName" | "lastName" | "jobTitle" | "location" | "resumeUrl" | "createdAt" | "updatedAt", ExtArgs["result"]["jobSeekerProfile"]>
   export type JobSeekerProfileInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    user?: boolean | UserDefaultArgs<ExtArgs>
     applications?: boolean | JobSeekerProfile$applicationsArgs<ExtArgs>
+    user?: boolean | UserDefaultArgs<ExtArgs>
     _count?: boolean | JobSeekerProfileCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type JobSeekerProfileIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -2813,8 +2813,8 @@ export namespace Prisma {
   export type $JobSeekerProfilePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "JobSeekerProfile"
     objects: {
-      user: Prisma.$UserPayload<ExtArgs>
       applications: Prisma.$JobApplicationPayload<ExtArgs>[]
+      user: Prisma.$UserPayload<ExtArgs>
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
@@ -3220,8 +3220,8 @@ export namespace Prisma {
    */
   export interface Prisma__JobSeekerProfileClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    user<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     applications<T extends JobSeekerProfile$applicationsArgs<ExtArgs> = {}>(args?: Subset<T, JobSeekerProfile$applicationsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$JobApplicationPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    user<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -5131,8 +5131,8 @@ export namespace Prisma {
     isActive?: boolean
     createdAt?: boolean
     updatedAt?: boolean
-    company?: boolean | CompanyProfileDefaultArgs<ExtArgs>
     applications?: boolean | JobPosting$applicationsArgs<ExtArgs>
+    company?: boolean | CompanyProfileDefaultArgs<ExtArgs>
     _count?: boolean | JobPostingCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["jobPosting"]>
 
@@ -5182,8 +5182,8 @@ export namespace Prisma {
 
   export type JobPostingOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "companyId" | "title" | "description" | "location" | "employment" | "salaryMin" | "salaryMax" | "isActive" | "createdAt" | "updatedAt", ExtArgs["result"]["jobPosting"]>
   export type JobPostingInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    company?: boolean | CompanyProfileDefaultArgs<ExtArgs>
     applications?: boolean | JobPosting$applicationsArgs<ExtArgs>
+    company?: boolean | CompanyProfileDefaultArgs<ExtArgs>
     _count?: boolean | JobPostingCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type JobPostingIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -5196,8 +5196,8 @@ export namespace Prisma {
   export type $JobPostingPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "JobPosting"
     objects: {
-      company: Prisma.$CompanyProfilePayload<ExtArgs>
       applications: Prisma.$JobApplicationPayload<ExtArgs>[]
+      company: Prisma.$CompanyProfilePayload<ExtArgs>
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
@@ -5605,8 +5605,8 @@ export namespace Prisma {
    */
   export interface Prisma__JobPostingClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    company<T extends CompanyProfileDefaultArgs<ExtArgs> = {}>(args?: Subset<T, CompanyProfileDefaultArgs<ExtArgs>>): Prisma__CompanyProfileClient<$Result.GetResult<Prisma.$CompanyProfilePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     applications<T extends JobPosting$applicationsArgs<ExtArgs> = {}>(args?: Subset<T, JobPosting$applicationsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$JobApplicationPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    company<T extends CompanyProfileDefaultArgs<ExtArgs> = {}>(args?: Subset<T, CompanyProfileDefaultArgs<ExtArgs>>): Prisma__CompanyProfileClient<$Result.GetResult<Prisma.$CompanyProfilePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -6320,8 +6320,8 @@ export namespace Prisma {
     appliedAt?: boolean
     createdAt?: boolean
     updatedAt?: boolean
-    jobSeeker?: boolean | JobSeekerProfileDefaultArgs<ExtArgs>
     jobPosting?: boolean | JobPostingDefaultArgs<ExtArgs>
+    jobSeeker?: boolean | JobSeekerProfileDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["jobApplication"]>
 
   export type JobApplicationSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -6333,8 +6333,8 @@ export namespace Prisma {
     appliedAt?: boolean
     createdAt?: boolean
     updatedAt?: boolean
-    jobSeeker?: boolean | JobSeekerProfileDefaultArgs<ExtArgs>
     jobPosting?: boolean | JobPostingDefaultArgs<ExtArgs>
+    jobSeeker?: boolean | JobSeekerProfileDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["jobApplication"]>
 
   export type JobApplicationSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -6346,8 +6346,8 @@ export namespace Prisma {
     appliedAt?: boolean
     createdAt?: boolean
     updatedAt?: boolean
-    jobSeeker?: boolean | JobSeekerProfileDefaultArgs<ExtArgs>
     jobPosting?: boolean | JobPostingDefaultArgs<ExtArgs>
+    jobSeeker?: boolean | JobSeekerProfileDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["jobApplication"]>
 
   export type JobApplicationSelectScalar = {
@@ -6363,23 +6363,23 @@ export namespace Prisma {
 
   export type JobApplicationOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "jobSeekerId" | "jobPostingId" | "status" | "coverLetter" | "appliedAt" | "createdAt" | "updatedAt", ExtArgs["result"]["jobApplication"]>
   export type JobApplicationInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    jobSeeker?: boolean | JobSeekerProfileDefaultArgs<ExtArgs>
     jobPosting?: boolean | JobPostingDefaultArgs<ExtArgs>
+    jobSeeker?: boolean | JobSeekerProfileDefaultArgs<ExtArgs>
   }
   export type JobApplicationIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    jobSeeker?: boolean | JobSeekerProfileDefaultArgs<ExtArgs>
     jobPosting?: boolean | JobPostingDefaultArgs<ExtArgs>
+    jobSeeker?: boolean | JobSeekerProfileDefaultArgs<ExtArgs>
   }
   export type JobApplicationIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    jobSeeker?: boolean | JobSeekerProfileDefaultArgs<ExtArgs>
     jobPosting?: boolean | JobPostingDefaultArgs<ExtArgs>
+    jobSeeker?: boolean | JobSeekerProfileDefaultArgs<ExtArgs>
   }
 
   export type $JobApplicationPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "JobApplication"
     objects: {
-      jobSeeker: Prisma.$JobSeekerProfilePayload<ExtArgs>
       jobPosting: Prisma.$JobPostingPayload<ExtArgs>
+      jobSeeker: Prisma.$JobSeekerProfilePayload<ExtArgs>
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
@@ -6784,8 +6784,8 @@ export namespace Prisma {
    */
   export interface Prisma__JobApplicationClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    jobSeeker<T extends JobSeekerProfileDefaultArgs<ExtArgs> = {}>(args?: Subset<T, JobSeekerProfileDefaultArgs<ExtArgs>>): Prisma__JobSeekerProfileClient<$Result.GetResult<Prisma.$JobSeekerProfilePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     jobPosting<T extends JobPostingDefaultArgs<ExtArgs> = {}>(args?: Subset<T, JobPostingDefaultArgs<ExtArgs>>): Prisma__JobPostingClient<$Result.GetResult<Prisma.$JobPostingPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    jobSeeker<T extends JobSeekerProfileDefaultArgs<ExtArgs> = {}>(args?: Subset<T, JobSeekerProfileDefaultArgs<ExtArgs>>): Prisma__JobSeekerProfileClient<$Result.GetResult<Prisma.$JobSeekerProfilePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -7461,8 +7461,8 @@ export namespace Prisma {
     role?: EnumUserRoleFilter<"User"> | $Enums.UserRole
     createdAt?: DateTimeFilter<"User"> | Date | string
     updatedAt?: DateTimeFilter<"User"> | Date | string
-    jobSeekerProfile?: XOR<JobSeekerProfileNullableScalarRelationFilter, JobSeekerProfileWhereInput> | null
     companyProfile?: XOR<CompanyProfileNullableScalarRelationFilter, CompanyProfileWhereInput> | null
+    jobSeekerProfile?: XOR<JobSeekerProfileNullableScalarRelationFilter, JobSeekerProfileWhereInput> | null
   }
 
   export type UserOrderByWithRelationInput = {
@@ -7472,8 +7472,8 @@ export namespace Prisma {
     role?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
-    jobSeekerProfile?: JobSeekerProfileOrderByWithRelationInput
     companyProfile?: CompanyProfileOrderByWithRelationInput
+    jobSeekerProfile?: JobSeekerProfileOrderByWithRelationInput
   }
 
   export type UserWhereUniqueInput = Prisma.AtLeast<{
@@ -7486,8 +7486,8 @@ export namespace Prisma {
     role?: EnumUserRoleFilter<"User"> | $Enums.UserRole
     createdAt?: DateTimeFilter<"User"> | Date | string
     updatedAt?: DateTimeFilter<"User"> | Date | string
-    jobSeekerProfile?: XOR<JobSeekerProfileNullableScalarRelationFilter, JobSeekerProfileWhereInput> | null
     companyProfile?: XOR<CompanyProfileNullableScalarRelationFilter, CompanyProfileWhereInput> | null
+    jobSeekerProfile?: XOR<JobSeekerProfileNullableScalarRelationFilter, JobSeekerProfileWhereInput> | null
   }, "id" | "email">
 
   export type UserOrderByWithAggregationInput = {
@@ -7529,8 +7529,8 @@ export namespace Prisma {
     resumeUrl?: StringNullableFilter<"JobSeekerProfile"> | string | null
     createdAt?: DateTimeFilter<"JobSeekerProfile"> | Date | string
     updatedAt?: DateTimeFilter<"JobSeekerProfile"> | Date | string
-    user?: XOR<UserScalarRelationFilter, UserWhereInput>
     applications?: JobApplicationListRelationFilter
+    user?: XOR<UserScalarRelationFilter, UserWhereInput>
   }
 
   export type JobSeekerProfileOrderByWithRelationInput = {
@@ -7543,8 +7543,8 @@ export namespace Prisma {
     resumeUrl?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
-    user?: UserOrderByWithRelationInput
     applications?: JobApplicationOrderByRelationAggregateInput
+    user?: UserOrderByWithRelationInput
   }
 
   export type JobSeekerProfileWhereUniqueInput = Prisma.AtLeast<{
@@ -7560,8 +7560,8 @@ export namespace Prisma {
     resumeUrl?: StringNullableFilter<"JobSeekerProfile"> | string | null
     createdAt?: DateTimeFilter<"JobSeekerProfile"> | Date | string
     updatedAt?: DateTimeFilter<"JobSeekerProfile"> | Date | string
-    user?: XOR<UserScalarRelationFilter, UserWhereInput>
     applications?: JobApplicationListRelationFilter
+    user?: XOR<UserScalarRelationFilter, UserWhereInput>
   }, "id" | "userId">
 
   export type JobSeekerProfileOrderByWithAggregationInput = {
@@ -7686,8 +7686,8 @@ export namespace Prisma {
     isActive?: BoolFilter<"JobPosting"> | boolean
     createdAt?: DateTimeFilter<"JobPosting"> | Date | string
     updatedAt?: DateTimeFilter<"JobPosting"> | Date | string
-    company?: XOR<CompanyProfileScalarRelationFilter, CompanyProfileWhereInput>
     applications?: JobApplicationListRelationFilter
+    company?: XOR<CompanyProfileScalarRelationFilter, CompanyProfileWhereInput>
   }
 
   export type JobPostingOrderByWithRelationInput = {
@@ -7702,8 +7702,8 @@ export namespace Prisma {
     isActive?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
-    company?: CompanyProfileOrderByWithRelationInput
     applications?: JobApplicationOrderByRelationAggregateInput
+    company?: CompanyProfileOrderByWithRelationInput
   }
 
   export type JobPostingWhereUniqueInput = Prisma.AtLeast<{
@@ -7721,8 +7721,8 @@ export namespace Prisma {
     isActive?: BoolFilter<"JobPosting"> | boolean
     createdAt?: DateTimeFilter<"JobPosting"> | Date | string
     updatedAt?: DateTimeFilter<"JobPosting"> | Date | string
-    company?: XOR<CompanyProfileScalarRelationFilter, CompanyProfileWhereInput>
     applications?: JobApplicationListRelationFilter
+    company?: XOR<CompanyProfileScalarRelationFilter, CompanyProfileWhereInput>
   }, "id">
 
   export type JobPostingOrderByWithAggregationInput = {
@@ -7773,8 +7773,8 @@ export namespace Prisma {
     appliedAt?: DateTimeFilter<"JobApplication"> | Date | string
     createdAt?: DateTimeFilter<"JobApplication"> | Date | string
     updatedAt?: DateTimeFilter<"JobApplication"> | Date | string
-    jobSeeker?: XOR<JobSeekerProfileScalarRelationFilter, JobSeekerProfileWhereInput>
     jobPosting?: XOR<JobPostingScalarRelationFilter, JobPostingWhereInput>
+    jobSeeker?: XOR<JobSeekerProfileScalarRelationFilter, JobSeekerProfileWhereInput>
   }
 
   export type JobApplicationOrderByWithRelationInput = {
@@ -7786,8 +7786,8 @@ export namespace Prisma {
     appliedAt?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
-    jobSeeker?: JobSeekerProfileOrderByWithRelationInput
     jobPosting?: JobPostingOrderByWithRelationInput
+    jobSeeker?: JobSeekerProfileOrderByWithRelationInput
   }
 
   export type JobApplicationWhereUniqueInput = Prisma.AtLeast<{
@@ -7803,8 +7803,8 @@ export namespace Prisma {
     appliedAt?: DateTimeFilter<"JobApplication"> | Date | string
     createdAt?: DateTimeFilter<"JobApplication"> | Date | string
     updatedAt?: DateTimeFilter<"JobApplication"> | Date | string
-    jobSeeker?: XOR<JobSeekerProfileScalarRelationFilter, JobSeekerProfileWhereInput>
     jobPosting?: XOR<JobPostingScalarRelationFilter, JobPostingWhereInput>
+    jobSeeker?: XOR<JobSeekerProfileScalarRelationFilter, JobSeekerProfileWhereInput>
   }, "id" | "jobSeekerId_jobPostingId">
 
   export type JobApplicationOrderByWithAggregationInput = {
@@ -7843,8 +7843,8 @@ export namespace Prisma {
     role: $Enums.UserRole
     createdAt?: Date | string
     updatedAt?: Date | string
-    jobSeekerProfile?: JobSeekerProfileCreateNestedOneWithoutUserInput
     companyProfile?: CompanyProfileCreateNestedOneWithoutUserInput
+    jobSeekerProfile?: JobSeekerProfileCreateNestedOneWithoutUserInput
   }
 
   export type UserUncheckedCreateInput = {
@@ -7854,8 +7854,8 @@ export namespace Prisma {
     role: $Enums.UserRole
     createdAt?: Date | string
     updatedAt?: Date | string
-    jobSeekerProfile?: JobSeekerProfileUncheckedCreateNestedOneWithoutUserInput
     companyProfile?: CompanyProfileUncheckedCreateNestedOneWithoutUserInput
+    jobSeekerProfile?: JobSeekerProfileUncheckedCreateNestedOneWithoutUserInput
   }
 
   export type UserUpdateInput = {
@@ -7864,8 +7864,8 @@ export namespace Prisma {
     role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    jobSeekerProfile?: JobSeekerProfileUpdateOneWithoutUserNestedInput
     companyProfile?: CompanyProfileUpdateOneWithoutUserNestedInput
+    jobSeekerProfile?: JobSeekerProfileUpdateOneWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateInput = {
@@ -7875,8 +7875,8 @@ export namespace Prisma {
     role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    jobSeekerProfile?: JobSeekerProfileUncheckedUpdateOneWithoutUserNestedInput
     companyProfile?: CompanyProfileUncheckedUpdateOneWithoutUserNestedInput
+    jobSeekerProfile?: JobSeekerProfileUncheckedUpdateOneWithoutUserNestedInput
   }
 
   export type UserCreateManyInput = {
@@ -7913,8 +7913,8 @@ export namespace Prisma {
     resumeUrl?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
-    user: UserCreateNestedOneWithoutJobSeekerProfileInput
     applications?: JobApplicationCreateNestedManyWithoutJobSeekerInput
+    user: UserCreateNestedOneWithoutJobSeekerProfileInput
   }
 
   export type JobSeekerProfileUncheckedCreateInput = {
@@ -7938,8 +7938,8 @@ export namespace Prisma {
     resumeUrl?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    user?: UserUpdateOneRequiredWithoutJobSeekerProfileNestedInput
     applications?: JobApplicationUpdateManyWithoutJobSeekerNestedInput
+    user?: UserUpdateOneRequiredWithoutJobSeekerProfileNestedInput
   }
 
   export type JobSeekerProfileUncheckedUpdateInput = {
@@ -8076,8 +8076,8 @@ export namespace Prisma {
     isActive?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
-    company: CompanyProfileCreateNestedOneWithoutJobPostsInput
     applications?: JobApplicationCreateNestedManyWithoutJobPostingInput
+    company: CompanyProfileCreateNestedOneWithoutJobPostsInput
   }
 
   export type JobPostingUncheckedCreateInput = {
@@ -8105,8 +8105,8 @@ export namespace Prisma {
     isActive?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    company?: CompanyProfileUpdateOneRequiredWithoutJobPostsNestedInput
     applications?: JobApplicationUpdateManyWithoutJobPostingNestedInput
+    company?: CompanyProfileUpdateOneRequiredWithoutJobPostsNestedInput
   }
 
   export type JobPostingUncheckedUpdateInput = {
@@ -8170,8 +8170,8 @@ export namespace Prisma {
     appliedAt?: Date | string
     createdAt?: Date | string
     updatedAt?: Date | string
-    jobSeeker: JobSeekerProfileCreateNestedOneWithoutApplicationsInput
     jobPosting: JobPostingCreateNestedOneWithoutApplicationsInput
+    jobSeeker: JobSeekerProfileCreateNestedOneWithoutApplicationsInput
   }
 
   export type JobApplicationUncheckedCreateInput = {
@@ -8191,8 +8191,8 @@ export namespace Prisma {
     appliedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    jobSeeker?: JobSeekerProfileUpdateOneRequiredWithoutApplicationsNestedInput
     jobPosting?: JobPostingUpdateOneRequiredWithoutApplicationsNestedInput
+    jobSeeker?: JobSeekerProfileUpdateOneRequiredWithoutApplicationsNestedInput
   }
 
   export type JobApplicationUncheckedUpdateInput = {
@@ -8280,14 +8280,14 @@ export namespace Prisma {
     not?: NestedDateTimeFilter<$PrismaModel> | Date | string
   }
 
-  export type JobSeekerProfileNullableScalarRelationFilter = {
-    is?: JobSeekerProfileWhereInput | null
-    isNot?: JobSeekerProfileWhereInput | null
-  }
-
   export type CompanyProfileNullableScalarRelationFilter = {
     is?: CompanyProfileWhereInput | null
     isNot?: CompanyProfileWhereInput | null
+  }
+
+  export type JobSeekerProfileNullableScalarRelationFilter = {
+    is?: JobSeekerProfileWhereInput | null
+    isNot?: JobSeekerProfileWhereInput | null
   }
 
   export type UserCountOrderByAggregateInput = {
@@ -8398,15 +8398,15 @@ export namespace Prisma {
     not?: NestedStringNullableFilter<$PrismaModel> | string | null
   }
 
-  export type UserScalarRelationFilter = {
-    is?: UserWhereInput
-    isNot?: UserWhereInput
-  }
-
   export type JobApplicationListRelationFilter = {
     every?: JobApplicationWhereInput
     some?: JobApplicationWhereInput
     none?: JobApplicationWhereInput
+  }
+
+  export type UserScalarRelationFilter = {
+    is?: UserWhereInput
+    isNot?: UserWhereInput
   }
 
   export type SortOrderInput = {
@@ -8643,14 +8643,14 @@ export namespace Prisma {
     not?: NestedEnumApplicationStatusFilter<$PrismaModel> | $Enums.ApplicationStatus
   }
 
-  export type JobSeekerProfileScalarRelationFilter = {
-    is?: JobSeekerProfileWhereInput
-    isNot?: JobSeekerProfileWhereInput
-  }
-
   export type JobPostingScalarRelationFilter = {
     is?: JobPostingWhereInput
     isNot?: JobPostingWhereInput
+  }
+
+  export type JobSeekerProfileScalarRelationFilter = {
+    is?: JobSeekerProfileWhereInput
+    isNot?: JobSeekerProfileWhereInput
   }
 
   export type JobApplicationJobSeekerIdJobPostingIdCompoundUniqueInput = {
@@ -8713,19 +8713,13 @@ export namespace Prisma {
     _max?: NestedEnumApplicationStatusFilter<$PrismaModel>
   }
 
-  export type JobSeekerProfileCreateNestedOneWithoutUserInput = {
-    create?: XOR<JobSeekerProfileCreateWithoutUserInput, JobSeekerProfileUncheckedCreateWithoutUserInput>
-    connectOrCreate?: JobSeekerProfileCreateOrConnectWithoutUserInput
-    connect?: JobSeekerProfileWhereUniqueInput
-  }
-
   export type CompanyProfileCreateNestedOneWithoutUserInput = {
     create?: XOR<CompanyProfileCreateWithoutUserInput, CompanyProfileUncheckedCreateWithoutUserInput>
     connectOrCreate?: CompanyProfileCreateOrConnectWithoutUserInput
     connect?: CompanyProfileWhereUniqueInput
   }
 
-  export type JobSeekerProfileUncheckedCreateNestedOneWithoutUserInput = {
+  export type JobSeekerProfileCreateNestedOneWithoutUserInput = {
     create?: XOR<JobSeekerProfileCreateWithoutUserInput, JobSeekerProfileUncheckedCreateWithoutUserInput>
     connectOrCreate?: JobSeekerProfileCreateOrConnectWithoutUserInput
     connect?: JobSeekerProfileWhereUniqueInput
@@ -8735,6 +8729,12 @@ export namespace Prisma {
     create?: XOR<CompanyProfileCreateWithoutUserInput, CompanyProfileUncheckedCreateWithoutUserInput>
     connectOrCreate?: CompanyProfileCreateOrConnectWithoutUserInput
     connect?: CompanyProfileWhereUniqueInput
+  }
+
+  export type JobSeekerProfileUncheckedCreateNestedOneWithoutUserInput = {
+    create?: XOR<JobSeekerProfileCreateWithoutUserInput, JobSeekerProfileUncheckedCreateWithoutUserInput>
+    connectOrCreate?: JobSeekerProfileCreateOrConnectWithoutUserInput
+    connect?: JobSeekerProfileWhereUniqueInput
   }
 
   export type StringFieldUpdateOperationsInput = {
@@ -8749,16 +8749,6 @@ export namespace Prisma {
     set?: Date | string
   }
 
-  export type JobSeekerProfileUpdateOneWithoutUserNestedInput = {
-    create?: XOR<JobSeekerProfileCreateWithoutUserInput, JobSeekerProfileUncheckedCreateWithoutUserInput>
-    connectOrCreate?: JobSeekerProfileCreateOrConnectWithoutUserInput
-    upsert?: JobSeekerProfileUpsertWithoutUserInput
-    disconnect?: JobSeekerProfileWhereInput | boolean
-    delete?: JobSeekerProfileWhereInput | boolean
-    connect?: JobSeekerProfileWhereUniqueInput
-    update?: XOR<XOR<JobSeekerProfileUpdateToOneWithWhereWithoutUserInput, JobSeekerProfileUpdateWithoutUserInput>, JobSeekerProfileUncheckedUpdateWithoutUserInput>
-  }
-
   export type CompanyProfileUpdateOneWithoutUserNestedInput = {
     create?: XOR<CompanyProfileCreateWithoutUserInput, CompanyProfileUncheckedCreateWithoutUserInput>
     connectOrCreate?: CompanyProfileCreateOrConnectWithoutUserInput
@@ -8769,15 +8759,7 @@ export namespace Prisma {
     update?: XOR<XOR<CompanyProfileUpdateToOneWithWhereWithoutUserInput, CompanyProfileUpdateWithoutUserInput>, CompanyProfileUncheckedUpdateWithoutUserInput>
   }
 
-  export type IntFieldUpdateOperationsInput = {
-    set?: number
-    increment?: number
-    decrement?: number
-    multiply?: number
-    divide?: number
-  }
-
-  export type JobSeekerProfileUncheckedUpdateOneWithoutUserNestedInput = {
+  export type JobSeekerProfileUpdateOneWithoutUserNestedInput = {
     create?: XOR<JobSeekerProfileCreateWithoutUserInput, JobSeekerProfileUncheckedCreateWithoutUserInput>
     connectOrCreate?: JobSeekerProfileCreateOrConnectWithoutUserInput
     upsert?: JobSeekerProfileUpsertWithoutUserInput
@@ -8785,6 +8767,14 @@ export namespace Prisma {
     delete?: JobSeekerProfileWhereInput | boolean
     connect?: JobSeekerProfileWhereUniqueInput
     update?: XOR<XOR<JobSeekerProfileUpdateToOneWithWhereWithoutUserInput, JobSeekerProfileUpdateWithoutUserInput>, JobSeekerProfileUncheckedUpdateWithoutUserInput>
+  }
+
+  export type IntFieldUpdateOperationsInput = {
+    set?: number
+    increment?: number
+    decrement?: number
+    multiply?: number
+    divide?: number
   }
 
   export type CompanyProfileUncheckedUpdateOneWithoutUserNestedInput = {
@@ -8797,10 +8787,14 @@ export namespace Prisma {
     update?: XOR<XOR<CompanyProfileUpdateToOneWithWhereWithoutUserInput, CompanyProfileUpdateWithoutUserInput>, CompanyProfileUncheckedUpdateWithoutUserInput>
   }
 
-  export type UserCreateNestedOneWithoutJobSeekerProfileInput = {
-    create?: XOR<UserCreateWithoutJobSeekerProfileInput, UserUncheckedCreateWithoutJobSeekerProfileInput>
-    connectOrCreate?: UserCreateOrConnectWithoutJobSeekerProfileInput
-    connect?: UserWhereUniqueInput
+  export type JobSeekerProfileUncheckedUpdateOneWithoutUserNestedInput = {
+    create?: XOR<JobSeekerProfileCreateWithoutUserInput, JobSeekerProfileUncheckedCreateWithoutUserInput>
+    connectOrCreate?: JobSeekerProfileCreateOrConnectWithoutUserInput
+    upsert?: JobSeekerProfileUpsertWithoutUserInput
+    disconnect?: JobSeekerProfileWhereInput | boolean
+    delete?: JobSeekerProfileWhereInput | boolean
+    connect?: JobSeekerProfileWhereUniqueInput
+    update?: XOR<XOR<JobSeekerProfileUpdateToOneWithWhereWithoutUserInput, JobSeekerProfileUpdateWithoutUserInput>, JobSeekerProfileUncheckedUpdateWithoutUserInput>
   }
 
   export type JobApplicationCreateNestedManyWithoutJobSeekerInput = {
@@ -8808,6 +8802,12 @@ export namespace Prisma {
     connectOrCreate?: JobApplicationCreateOrConnectWithoutJobSeekerInput | JobApplicationCreateOrConnectWithoutJobSeekerInput[]
     createMany?: JobApplicationCreateManyJobSeekerInputEnvelope
     connect?: JobApplicationWhereUniqueInput | JobApplicationWhereUniqueInput[]
+  }
+
+  export type UserCreateNestedOneWithoutJobSeekerProfileInput = {
+    create?: XOR<UserCreateWithoutJobSeekerProfileInput, UserUncheckedCreateWithoutJobSeekerProfileInput>
+    connectOrCreate?: UserCreateOrConnectWithoutJobSeekerProfileInput
+    connect?: UserWhereUniqueInput
   }
 
   export type JobApplicationUncheckedCreateNestedManyWithoutJobSeekerInput = {
@@ -8819,14 +8819,6 @@ export namespace Prisma {
 
   export type NullableStringFieldUpdateOperationsInput = {
     set?: string | null
-  }
-
-  export type UserUpdateOneRequiredWithoutJobSeekerProfileNestedInput = {
-    create?: XOR<UserCreateWithoutJobSeekerProfileInput, UserUncheckedCreateWithoutJobSeekerProfileInput>
-    connectOrCreate?: UserCreateOrConnectWithoutJobSeekerProfileInput
-    upsert?: UserUpsertWithoutJobSeekerProfileInput
-    connect?: UserWhereUniqueInput
-    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutJobSeekerProfileInput, UserUpdateWithoutJobSeekerProfileInput>, UserUncheckedUpdateWithoutJobSeekerProfileInput>
   }
 
   export type JobApplicationUpdateManyWithoutJobSeekerNestedInput = {
@@ -8841,6 +8833,14 @@ export namespace Prisma {
     update?: JobApplicationUpdateWithWhereUniqueWithoutJobSeekerInput | JobApplicationUpdateWithWhereUniqueWithoutJobSeekerInput[]
     updateMany?: JobApplicationUpdateManyWithWhereWithoutJobSeekerInput | JobApplicationUpdateManyWithWhereWithoutJobSeekerInput[]
     deleteMany?: JobApplicationScalarWhereInput | JobApplicationScalarWhereInput[]
+  }
+
+  export type UserUpdateOneRequiredWithoutJobSeekerProfileNestedInput = {
+    create?: XOR<UserCreateWithoutJobSeekerProfileInput, UserUncheckedCreateWithoutJobSeekerProfileInput>
+    connectOrCreate?: UserCreateOrConnectWithoutJobSeekerProfileInput
+    upsert?: UserUpsertWithoutJobSeekerProfileInput
+    connect?: UserWhereUniqueInput
+    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutJobSeekerProfileInput, UserUpdateWithoutJobSeekerProfileInput>, UserUncheckedUpdateWithoutJobSeekerProfileInput>
   }
 
   export type JobApplicationUncheckedUpdateManyWithoutJobSeekerNestedInput = {
@@ -8913,17 +8913,17 @@ export namespace Prisma {
     deleteMany?: JobPostingScalarWhereInput | JobPostingScalarWhereInput[]
   }
 
-  export type CompanyProfileCreateNestedOneWithoutJobPostsInput = {
-    create?: XOR<CompanyProfileCreateWithoutJobPostsInput, CompanyProfileUncheckedCreateWithoutJobPostsInput>
-    connectOrCreate?: CompanyProfileCreateOrConnectWithoutJobPostsInput
-    connect?: CompanyProfileWhereUniqueInput
-  }
-
   export type JobApplicationCreateNestedManyWithoutJobPostingInput = {
     create?: XOR<JobApplicationCreateWithoutJobPostingInput, JobApplicationUncheckedCreateWithoutJobPostingInput> | JobApplicationCreateWithoutJobPostingInput[] | JobApplicationUncheckedCreateWithoutJobPostingInput[]
     connectOrCreate?: JobApplicationCreateOrConnectWithoutJobPostingInput | JobApplicationCreateOrConnectWithoutJobPostingInput[]
     createMany?: JobApplicationCreateManyJobPostingInputEnvelope
     connect?: JobApplicationWhereUniqueInput | JobApplicationWhereUniqueInput[]
+  }
+
+  export type CompanyProfileCreateNestedOneWithoutJobPostsInput = {
+    create?: XOR<CompanyProfileCreateWithoutJobPostsInput, CompanyProfileUncheckedCreateWithoutJobPostsInput>
+    connectOrCreate?: CompanyProfileCreateOrConnectWithoutJobPostsInput
+    connect?: CompanyProfileWhereUniqueInput
   }
 
   export type JobApplicationUncheckedCreateNestedManyWithoutJobPostingInput = {
@@ -8945,14 +8945,6 @@ export namespace Prisma {
     set?: boolean
   }
 
-  export type CompanyProfileUpdateOneRequiredWithoutJobPostsNestedInput = {
-    create?: XOR<CompanyProfileCreateWithoutJobPostsInput, CompanyProfileUncheckedCreateWithoutJobPostsInput>
-    connectOrCreate?: CompanyProfileCreateOrConnectWithoutJobPostsInput
-    upsert?: CompanyProfileUpsertWithoutJobPostsInput
-    connect?: CompanyProfileWhereUniqueInput
-    update?: XOR<XOR<CompanyProfileUpdateToOneWithWhereWithoutJobPostsInput, CompanyProfileUpdateWithoutJobPostsInput>, CompanyProfileUncheckedUpdateWithoutJobPostsInput>
-  }
-
   export type JobApplicationUpdateManyWithoutJobPostingNestedInput = {
     create?: XOR<JobApplicationCreateWithoutJobPostingInput, JobApplicationUncheckedCreateWithoutJobPostingInput> | JobApplicationCreateWithoutJobPostingInput[] | JobApplicationUncheckedCreateWithoutJobPostingInput[]
     connectOrCreate?: JobApplicationCreateOrConnectWithoutJobPostingInput | JobApplicationCreateOrConnectWithoutJobPostingInput[]
@@ -8965,6 +8957,14 @@ export namespace Prisma {
     update?: JobApplicationUpdateWithWhereUniqueWithoutJobPostingInput | JobApplicationUpdateWithWhereUniqueWithoutJobPostingInput[]
     updateMany?: JobApplicationUpdateManyWithWhereWithoutJobPostingInput | JobApplicationUpdateManyWithWhereWithoutJobPostingInput[]
     deleteMany?: JobApplicationScalarWhereInput | JobApplicationScalarWhereInput[]
+  }
+
+  export type CompanyProfileUpdateOneRequiredWithoutJobPostsNestedInput = {
+    create?: XOR<CompanyProfileCreateWithoutJobPostsInput, CompanyProfileUncheckedCreateWithoutJobPostsInput>
+    connectOrCreate?: CompanyProfileCreateOrConnectWithoutJobPostsInput
+    upsert?: CompanyProfileUpsertWithoutJobPostsInput
+    connect?: CompanyProfileWhereUniqueInput
+    update?: XOR<XOR<CompanyProfileUpdateToOneWithWhereWithoutJobPostsInput, CompanyProfileUpdateWithoutJobPostsInput>, CompanyProfileUncheckedUpdateWithoutJobPostsInput>
   }
 
   export type JobApplicationUncheckedUpdateManyWithoutJobPostingNestedInput = {
@@ -8981,28 +8981,20 @@ export namespace Prisma {
     deleteMany?: JobApplicationScalarWhereInput | JobApplicationScalarWhereInput[]
   }
 
-  export type JobSeekerProfileCreateNestedOneWithoutApplicationsInput = {
-    create?: XOR<JobSeekerProfileCreateWithoutApplicationsInput, JobSeekerProfileUncheckedCreateWithoutApplicationsInput>
-    connectOrCreate?: JobSeekerProfileCreateOrConnectWithoutApplicationsInput
-    connect?: JobSeekerProfileWhereUniqueInput
-  }
-
   export type JobPostingCreateNestedOneWithoutApplicationsInput = {
     create?: XOR<JobPostingCreateWithoutApplicationsInput, JobPostingUncheckedCreateWithoutApplicationsInput>
     connectOrCreate?: JobPostingCreateOrConnectWithoutApplicationsInput
     connect?: JobPostingWhereUniqueInput
   }
 
-  export type EnumApplicationStatusFieldUpdateOperationsInput = {
-    set?: $Enums.ApplicationStatus
-  }
-
-  export type JobSeekerProfileUpdateOneRequiredWithoutApplicationsNestedInput = {
+  export type JobSeekerProfileCreateNestedOneWithoutApplicationsInput = {
     create?: XOR<JobSeekerProfileCreateWithoutApplicationsInput, JobSeekerProfileUncheckedCreateWithoutApplicationsInput>
     connectOrCreate?: JobSeekerProfileCreateOrConnectWithoutApplicationsInput
-    upsert?: JobSeekerProfileUpsertWithoutApplicationsInput
     connect?: JobSeekerProfileWhereUniqueInput
-    update?: XOR<XOR<JobSeekerProfileUpdateToOneWithWhereWithoutApplicationsInput, JobSeekerProfileUpdateWithoutApplicationsInput>, JobSeekerProfileUncheckedUpdateWithoutApplicationsInput>
+  }
+
+  export type EnumApplicationStatusFieldUpdateOperationsInput = {
+    set?: $Enums.ApplicationStatus
   }
 
   export type JobPostingUpdateOneRequiredWithoutApplicationsNestedInput = {
@@ -9011,6 +9003,14 @@ export namespace Prisma {
     upsert?: JobPostingUpsertWithoutApplicationsInput
     connect?: JobPostingWhereUniqueInput
     update?: XOR<XOR<JobPostingUpdateToOneWithWhereWithoutApplicationsInput, JobPostingUpdateWithoutApplicationsInput>, JobPostingUncheckedUpdateWithoutApplicationsInput>
+  }
+
+  export type JobSeekerProfileUpdateOneRequiredWithoutApplicationsNestedInput = {
+    create?: XOR<JobSeekerProfileCreateWithoutApplicationsInput, JobSeekerProfileUncheckedCreateWithoutApplicationsInput>
+    connectOrCreate?: JobSeekerProfileCreateOrConnectWithoutApplicationsInput
+    upsert?: JobSeekerProfileUpsertWithoutApplicationsInput
+    connect?: JobSeekerProfileWhereUniqueInput
+    update?: XOR<XOR<JobSeekerProfileUpdateToOneWithWhereWithoutApplicationsInput, JobSeekerProfileUpdateWithoutApplicationsInput>, JobSeekerProfileUncheckedUpdateWithoutApplicationsInput>
   }
 
   export type NestedIntFilter<$PrismaModel = never> = {
@@ -9223,6 +9223,32 @@ export namespace Prisma {
     _max?: NestedEnumApplicationStatusFilter<$PrismaModel>
   }
 
+  export type CompanyProfileCreateWithoutUserInput = {
+    companyName: string
+    industry?: string | null
+    companySize?: string | null
+    website?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    jobPosts?: JobPostingCreateNestedManyWithoutCompanyInput
+  }
+
+  export type CompanyProfileUncheckedCreateWithoutUserInput = {
+    id?: number
+    companyName: string
+    industry?: string | null
+    companySize?: string | null
+    website?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    jobPosts?: JobPostingUncheckedCreateNestedManyWithoutCompanyInput
+  }
+
+  export type CompanyProfileCreateOrConnectWithoutUserInput = {
+    where: CompanyProfileWhereUniqueInput
+    create: XOR<CompanyProfileCreateWithoutUserInput, CompanyProfileUncheckedCreateWithoutUserInput>
+  }
+
   export type JobSeekerProfileCreateWithoutUserInput = {
     firstName: string
     lastName: string
@@ -9251,30 +9277,36 @@ export namespace Prisma {
     create: XOR<JobSeekerProfileCreateWithoutUserInput, JobSeekerProfileUncheckedCreateWithoutUserInput>
   }
 
-  export type CompanyProfileCreateWithoutUserInput = {
-    companyName: string
-    industry?: string | null
-    companySize?: string | null
-    website?: string | null
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    jobPosts?: JobPostingCreateNestedManyWithoutCompanyInput
-  }
-
-  export type CompanyProfileUncheckedCreateWithoutUserInput = {
-    id?: number
-    companyName: string
-    industry?: string | null
-    companySize?: string | null
-    website?: string | null
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    jobPosts?: JobPostingUncheckedCreateNestedManyWithoutCompanyInput
-  }
-
-  export type CompanyProfileCreateOrConnectWithoutUserInput = {
-    where: CompanyProfileWhereUniqueInput
+  export type CompanyProfileUpsertWithoutUserInput = {
+    update: XOR<CompanyProfileUpdateWithoutUserInput, CompanyProfileUncheckedUpdateWithoutUserInput>
     create: XOR<CompanyProfileCreateWithoutUserInput, CompanyProfileUncheckedCreateWithoutUserInput>
+    where?: CompanyProfileWhereInput
+  }
+
+  export type CompanyProfileUpdateToOneWithWhereWithoutUserInput = {
+    where?: CompanyProfileWhereInput
+    data: XOR<CompanyProfileUpdateWithoutUserInput, CompanyProfileUncheckedUpdateWithoutUserInput>
+  }
+
+  export type CompanyProfileUpdateWithoutUserInput = {
+    companyName?: StringFieldUpdateOperationsInput | string
+    industry?: NullableStringFieldUpdateOperationsInput | string | null
+    companySize?: NullableStringFieldUpdateOperationsInput | string | null
+    website?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    jobPosts?: JobPostingUpdateManyWithoutCompanyNestedInput
+  }
+
+  export type CompanyProfileUncheckedUpdateWithoutUserInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    companyName?: StringFieldUpdateOperationsInput | string
+    industry?: NullableStringFieldUpdateOperationsInput | string | null
+    companySize?: NullableStringFieldUpdateOperationsInput | string | null
+    website?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    jobPosts?: JobPostingUncheckedUpdateManyWithoutCompanyNestedInput
   }
 
   export type JobSeekerProfileUpsertWithoutUserInput = {
@@ -9311,62 +9343,6 @@ export namespace Prisma {
     applications?: JobApplicationUncheckedUpdateManyWithoutJobSeekerNestedInput
   }
 
-  export type CompanyProfileUpsertWithoutUserInput = {
-    update: XOR<CompanyProfileUpdateWithoutUserInput, CompanyProfileUncheckedUpdateWithoutUserInput>
-    create: XOR<CompanyProfileCreateWithoutUserInput, CompanyProfileUncheckedCreateWithoutUserInput>
-    where?: CompanyProfileWhereInput
-  }
-
-  export type CompanyProfileUpdateToOneWithWhereWithoutUserInput = {
-    where?: CompanyProfileWhereInput
-    data: XOR<CompanyProfileUpdateWithoutUserInput, CompanyProfileUncheckedUpdateWithoutUserInput>
-  }
-
-  export type CompanyProfileUpdateWithoutUserInput = {
-    companyName?: StringFieldUpdateOperationsInput | string
-    industry?: NullableStringFieldUpdateOperationsInput | string | null
-    companySize?: NullableStringFieldUpdateOperationsInput | string | null
-    website?: NullableStringFieldUpdateOperationsInput | string | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    jobPosts?: JobPostingUpdateManyWithoutCompanyNestedInput
-  }
-
-  export type CompanyProfileUncheckedUpdateWithoutUserInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    companyName?: StringFieldUpdateOperationsInput | string
-    industry?: NullableStringFieldUpdateOperationsInput | string | null
-    companySize?: NullableStringFieldUpdateOperationsInput | string | null
-    website?: NullableStringFieldUpdateOperationsInput | string | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    jobPosts?: JobPostingUncheckedUpdateManyWithoutCompanyNestedInput
-  }
-
-  export type UserCreateWithoutJobSeekerProfileInput = {
-    email: string
-    passwordHash: string
-    role: $Enums.UserRole
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    companyProfile?: CompanyProfileCreateNestedOneWithoutUserInput
-  }
-
-  export type UserUncheckedCreateWithoutJobSeekerProfileInput = {
-    id?: number
-    email: string
-    passwordHash: string
-    role: $Enums.UserRole
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    companyProfile?: CompanyProfileUncheckedCreateNestedOneWithoutUserInput
-  }
-
-  export type UserCreateOrConnectWithoutJobSeekerProfileInput = {
-    where: UserWhereUniqueInput
-    create: XOR<UserCreateWithoutJobSeekerProfileInput, UserUncheckedCreateWithoutJobSeekerProfileInput>
-  }
-
   export type JobApplicationCreateWithoutJobSeekerInput = {
     status?: $Enums.ApplicationStatus
     coverLetter?: string | null
@@ -9396,34 +9372,28 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
-  export type UserUpsertWithoutJobSeekerProfileInput = {
-    update: XOR<UserUpdateWithoutJobSeekerProfileInput, UserUncheckedUpdateWithoutJobSeekerProfileInput>
+  export type UserCreateWithoutJobSeekerProfileInput = {
+    email: string
+    passwordHash: string
+    role: $Enums.UserRole
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    companyProfile?: CompanyProfileCreateNestedOneWithoutUserInput
+  }
+
+  export type UserUncheckedCreateWithoutJobSeekerProfileInput = {
+    id?: number
+    email: string
+    passwordHash: string
+    role: $Enums.UserRole
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    companyProfile?: CompanyProfileUncheckedCreateNestedOneWithoutUserInput
+  }
+
+  export type UserCreateOrConnectWithoutJobSeekerProfileInput = {
+    where: UserWhereUniqueInput
     create: XOR<UserCreateWithoutJobSeekerProfileInput, UserUncheckedCreateWithoutJobSeekerProfileInput>
-    where?: UserWhereInput
-  }
-
-  export type UserUpdateToOneWithWhereWithoutJobSeekerProfileInput = {
-    where?: UserWhereInput
-    data: XOR<UserUpdateWithoutJobSeekerProfileInput, UserUncheckedUpdateWithoutJobSeekerProfileInput>
-  }
-
-  export type UserUpdateWithoutJobSeekerProfileInput = {
-    email?: StringFieldUpdateOperationsInput | string
-    passwordHash?: StringFieldUpdateOperationsInput | string
-    role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    companyProfile?: CompanyProfileUpdateOneWithoutUserNestedInput
-  }
-
-  export type UserUncheckedUpdateWithoutJobSeekerProfileInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    email?: StringFieldUpdateOperationsInput | string
-    passwordHash?: StringFieldUpdateOperationsInput | string
-    role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    companyProfile?: CompanyProfileUncheckedUpdateOneWithoutUserNestedInput
   }
 
   export type JobApplicationUpsertWithWhereUniqueWithoutJobSeekerInput = {
@@ -9454,6 +9424,36 @@ export namespace Prisma {
     appliedAt?: DateTimeFilter<"JobApplication"> | Date | string
     createdAt?: DateTimeFilter<"JobApplication"> | Date | string
     updatedAt?: DateTimeFilter<"JobApplication"> | Date | string
+  }
+
+  export type UserUpsertWithoutJobSeekerProfileInput = {
+    update: XOR<UserUpdateWithoutJobSeekerProfileInput, UserUncheckedUpdateWithoutJobSeekerProfileInput>
+    create: XOR<UserCreateWithoutJobSeekerProfileInput, UserUncheckedCreateWithoutJobSeekerProfileInput>
+    where?: UserWhereInput
+  }
+
+  export type UserUpdateToOneWithWhereWithoutJobSeekerProfileInput = {
+    where?: UserWhereInput
+    data: XOR<UserUpdateWithoutJobSeekerProfileInput, UserUncheckedUpdateWithoutJobSeekerProfileInput>
+  }
+
+  export type UserUpdateWithoutJobSeekerProfileInput = {
+    email?: StringFieldUpdateOperationsInput | string
+    passwordHash?: StringFieldUpdateOperationsInput | string
+    role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    companyProfile?: CompanyProfileUpdateOneWithoutUserNestedInput
+  }
+
+  export type UserUncheckedUpdateWithoutJobSeekerProfileInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    email?: StringFieldUpdateOperationsInput | string
+    passwordHash?: StringFieldUpdateOperationsInput | string
+    role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    companyProfile?: CompanyProfileUncheckedUpdateOneWithoutUserNestedInput
   }
 
   export type UserCreateWithoutCompanyProfileInput = {
@@ -9580,32 +9580,6 @@ export namespace Prisma {
     updatedAt?: DateTimeFilter<"JobPosting"> | Date | string
   }
 
-  export type CompanyProfileCreateWithoutJobPostsInput = {
-    companyName: string
-    industry?: string | null
-    companySize?: string | null
-    website?: string | null
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    user: UserCreateNestedOneWithoutCompanyProfileInput
-  }
-
-  export type CompanyProfileUncheckedCreateWithoutJobPostsInput = {
-    id?: number
-    userId: number
-    companyName: string
-    industry?: string | null
-    companySize?: string | null
-    website?: string | null
-    createdAt?: Date | string
-    updatedAt?: Date | string
-  }
-
-  export type CompanyProfileCreateOrConnectWithoutJobPostsInput = {
-    where: CompanyProfileWhereUniqueInput
-    create: XOR<CompanyProfileCreateWithoutJobPostsInput, CompanyProfileUncheckedCreateWithoutJobPostsInput>
-  }
-
   export type JobApplicationCreateWithoutJobPostingInput = {
     status?: $Enums.ApplicationStatus
     coverLetter?: string | null
@@ -9633,6 +9607,48 @@ export namespace Prisma {
   export type JobApplicationCreateManyJobPostingInputEnvelope = {
     data: JobApplicationCreateManyJobPostingInput | JobApplicationCreateManyJobPostingInput[]
     skipDuplicates?: boolean
+  }
+
+  export type CompanyProfileCreateWithoutJobPostsInput = {
+    companyName: string
+    industry?: string | null
+    companySize?: string | null
+    website?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    user: UserCreateNestedOneWithoutCompanyProfileInput
+  }
+
+  export type CompanyProfileUncheckedCreateWithoutJobPostsInput = {
+    id?: number
+    userId: number
+    companyName: string
+    industry?: string | null
+    companySize?: string | null
+    website?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type CompanyProfileCreateOrConnectWithoutJobPostsInput = {
+    where: CompanyProfileWhereUniqueInput
+    create: XOR<CompanyProfileCreateWithoutJobPostsInput, CompanyProfileUncheckedCreateWithoutJobPostsInput>
+  }
+
+  export type JobApplicationUpsertWithWhereUniqueWithoutJobPostingInput = {
+    where: JobApplicationWhereUniqueInput
+    update: XOR<JobApplicationUpdateWithoutJobPostingInput, JobApplicationUncheckedUpdateWithoutJobPostingInput>
+    create: XOR<JobApplicationCreateWithoutJobPostingInput, JobApplicationUncheckedCreateWithoutJobPostingInput>
+  }
+
+  export type JobApplicationUpdateWithWhereUniqueWithoutJobPostingInput = {
+    where: JobApplicationWhereUniqueInput
+    data: XOR<JobApplicationUpdateWithoutJobPostingInput, JobApplicationUncheckedUpdateWithoutJobPostingInput>
+  }
+
+  export type JobApplicationUpdateManyWithWhereWithoutJobPostingInput = {
+    where: JobApplicationScalarWhereInput
+    data: XOR<JobApplicationUpdateManyMutationInput, JobApplicationUncheckedUpdateManyWithoutJobPostingInput>
   }
 
   export type CompanyProfileUpsertWithoutJobPostsInput = {
@@ -9667,50 +9683,6 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type JobApplicationUpsertWithWhereUniqueWithoutJobPostingInput = {
-    where: JobApplicationWhereUniqueInput
-    update: XOR<JobApplicationUpdateWithoutJobPostingInput, JobApplicationUncheckedUpdateWithoutJobPostingInput>
-    create: XOR<JobApplicationCreateWithoutJobPostingInput, JobApplicationUncheckedCreateWithoutJobPostingInput>
-  }
-
-  export type JobApplicationUpdateWithWhereUniqueWithoutJobPostingInput = {
-    where: JobApplicationWhereUniqueInput
-    data: XOR<JobApplicationUpdateWithoutJobPostingInput, JobApplicationUncheckedUpdateWithoutJobPostingInput>
-  }
-
-  export type JobApplicationUpdateManyWithWhereWithoutJobPostingInput = {
-    where: JobApplicationScalarWhereInput
-    data: XOR<JobApplicationUpdateManyMutationInput, JobApplicationUncheckedUpdateManyWithoutJobPostingInput>
-  }
-
-  export type JobSeekerProfileCreateWithoutApplicationsInput = {
-    firstName: string
-    lastName: string
-    jobTitle?: string | null
-    location?: string | null
-    resumeUrl?: string | null
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    user: UserCreateNestedOneWithoutJobSeekerProfileInput
-  }
-
-  export type JobSeekerProfileUncheckedCreateWithoutApplicationsInput = {
-    id?: number
-    userId: number
-    firstName: string
-    lastName: string
-    jobTitle?: string | null
-    location?: string | null
-    resumeUrl?: string | null
-    createdAt?: Date | string
-    updatedAt?: Date | string
-  }
-
-  export type JobSeekerProfileCreateOrConnectWithoutApplicationsInput = {
-    where: JobSeekerProfileWhereUniqueInput
-    create: XOR<JobSeekerProfileCreateWithoutApplicationsInput, JobSeekerProfileUncheckedCreateWithoutApplicationsInput>
-  }
-
   export type JobPostingCreateWithoutApplicationsInput = {
     title: string
     description: string
@@ -9743,38 +9715,32 @@ export namespace Prisma {
     create: XOR<JobPostingCreateWithoutApplicationsInput, JobPostingUncheckedCreateWithoutApplicationsInput>
   }
 
-  export type JobSeekerProfileUpsertWithoutApplicationsInput = {
-    update: XOR<JobSeekerProfileUpdateWithoutApplicationsInput, JobSeekerProfileUncheckedUpdateWithoutApplicationsInput>
+  export type JobSeekerProfileCreateWithoutApplicationsInput = {
+    firstName: string
+    lastName: string
+    jobTitle?: string | null
+    location?: string | null
+    resumeUrl?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    user: UserCreateNestedOneWithoutJobSeekerProfileInput
+  }
+
+  export type JobSeekerProfileUncheckedCreateWithoutApplicationsInput = {
+    id?: number
+    userId: number
+    firstName: string
+    lastName: string
+    jobTitle?: string | null
+    location?: string | null
+    resumeUrl?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type JobSeekerProfileCreateOrConnectWithoutApplicationsInput = {
+    where: JobSeekerProfileWhereUniqueInput
     create: XOR<JobSeekerProfileCreateWithoutApplicationsInput, JobSeekerProfileUncheckedCreateWithoutApplicationsInput>
-    where?: JobSeekerProfileWhereInput
-  }
-
-  export type JobSeekerProfileUpdateToOneWithWhereWithoutApplicationsInput = {
-    where?: JobSeekerProfileWhereInput
-    data: XOR<JobSeekerProfileUpdateWithoutApplicationsInput, JobSeekerProfileUncheckedUpdateWithoutApplicationsInput>
-  }
-
-  export type JobSeekerProfileUpdateWithoutApplicationsInput = {
-    firstName?: StringFieldUpdateOperationsInput | string
-    lastName?: StringFieldUpdateOperationsInput | string
-    jobTitle?: NullableStringFieldUpdateOperationsInput | string | null
-    location?: NullableStringFieldUpdateOperationsInput | string | null
-    resumeUrl?: NullableStringFieldUpdateOperationsInput | string | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    user?: UserUpdateOneRequiredWithoutJobSeekerProfileNestedInput
-  }
-
-  export type JobSeekerProfileUncheckedUpdateWithoutApplicationsInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    userId?: IntFieldUpdateOperationsInput | number
-    firstName?: StringFieldUpdateOperationsInput | string
-    lastName?: StringFieldUpdateOperationsInput | string
-    jobTitle?: NullableStringFieldUpdateOperationsInput | string | null
-    location?: NullableStringFieldUpdateOperationsInput | string | null
-    resumeUrl?: NullableStringFieldUpdateOperationsInput | string | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type JobPostingUpsertWithoutApplicationsInput = {
@@ -9811,6 +9777,40 @@ export namespace Prisma {
     salaryMin?: NullableIntFieldUpdateOperationsInput | number | null
     salaryMax?: NullableIntFieldUpdateOperationsInput | number | null
     isActive?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type JobSeekerProfileUpsertWithoutApplicationsInput = {
+    update: XOR<JobSeekerProfileUpdateWithoutApplicationsInput, JobSeekerProfileUncheckedUpdateWithoutApplicationsInput>
+    create: XOR<JobSeekerProfileCreateWithoutApplicationsInput, JobSeekerProfileUncheckedCreateWithoutApplicationsInput>
+    where?: JobSeekerProfileWhereInput
+  }
+
+  export type JobSeekerProfileUpdateToOneWithWhereWithoutApplicationsInput = {
+    where?: JobSeekerProfileWhereInput
+    data: XOR<JobSeekerProfileUpdateWithoutApplicationsInput, JobSeekerProfileUncheckedUpdateWithoutApplicationsInput>
+  }
+
+  export type JobSeekerProfileUpdateWithoutApplicationsInput = {
+    firstName?: StringFieldUpdateOperationsInput | string
+    lastName?: StringFieldUpdateOperationsInput | string
+    jobTitle?: NullableStringFieldUpdateOperationsInput | string | null
+    location?: NullableStringFieldUpdateOperationsInput | string | null
+    resumeUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    user?: UserUpdateOneRequiredWithoutJobSeekerProfileNestedInput
+  }
+
+  export type JobSeekerProfileUncheckedUpdateWithoutApplicationsInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    userId?: IntFieldUpdateOperationsInput | number
+    firstName?: StringFieldUpdateOperationsInput | string
+    lastName?: StringFieldUpdateOperationsInput | string
+    jobTitle?: NullableStringFieldUpdateOperationsInput | string | null
+    location?: NullableStringFieldUpdateOperationsInput | string | null
+    resumeUrl?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
